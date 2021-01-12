@@ -32,3 +32,14 @@ def stations_by_river(stations):
 
     return station_river
 
+def rivers_by_station_number(stations, N):
+    stations_per_river = [(river, len(stats)) for river, stats in stations_by_river(stations).items()]
+    stations_per_river = sorted_by_key(stations_per_river, 1, True)
+    min_stations = stations_per_river[N-1][1]
+    cut_list = stations_per_river[:N]
+    i = N
+    while stations_per_river[i][1] == min_stations:
+        cut_list.append(stations_per_river[i])
+        i+=1
+    return cut_list
+    
