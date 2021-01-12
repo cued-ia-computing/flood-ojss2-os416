@@ -16,4 +16,3 @@ for river in test_rivers:
     station_list = [i.name for i in river_stations[river]]
     station_list.sort()
     print(station_list)
-
