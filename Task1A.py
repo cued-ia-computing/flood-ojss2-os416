@@ -1,14 +1,14 @@
 # Copyright (C) 2018 Garth N. Wells
 #
 # SPDX-License-Identifier: MIT
-#can you see this oskar
+
 from floodsystem.stationdata import build_station_list
 
 
 def run():
     """Requirements for Task 1A"""
 
-    # Build list of stations
+    # Build list of stations can you see this
     stations = build_station_list()
 
     # Print number of stations
