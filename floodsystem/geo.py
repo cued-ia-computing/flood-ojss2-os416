@@ -42,4 +42,4 @@ def rivers_by_station_number(stations, N):
         cut_list.append(stations_per_river[i])
         i+=1
     return cut_list
-    
+
