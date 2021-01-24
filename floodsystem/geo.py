@@ -25,6 +25,7 @@ def stations_within_radius(stations, centre, r):
     return station_list
 
 def rivers_with_station(stations):
+    """Returns name of rivers from corresponding Stations"""
     return {i.river for i in stations}
 
 def stations_by_river(stations):
