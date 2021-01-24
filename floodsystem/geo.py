@@ -37,6 +37,7 @@ def stations_by_river(stations):
     return station_river
 
 def rivers_by_station_number(stations, N):
+    """Creates a list of rivers sorted by number of stations on them."""
     stations_per_river = [(river, len(stats)) for river, stats in stations_by_river(stations).items()]
     stations_per_river = sorted_by_key(stations_per_river, 1, True)
     min_stations = stations_per_river[N-1][1]
