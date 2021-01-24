@@ -25,10 +25,11 @@ def stations_within_radius(stations, centre, r):
     return station_list
 
 def rivers_with_station(stations):
-    """Returns name of rivers from corresponding Stations"""
+    """Returns the name of rivers from corresponding Stations."""
     return {i.river for i in stations}
 
 def stations_by_river(stations):
+    """Creates a list of rivers from station-data."""
     station_river = defaultdict(list)
     for i in stations:
         station_river[i.river].append(i)
