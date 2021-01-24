@@ -11,7 +11,6 @@ from haversine import haversine, Unit
 from collections import defaultdict
 
 def stations_by_distance(stations, p):
-    """Test"""
     station_list = []
     for station in stations:
         station_list.append((station, haversine(station.coord, p)))
@@ -19,13 +18,11 @@ def stations_by_distance(stations, p):
     return sorted_by_key(station_list, 1)
 
 def stations_within_radius(stations, centre, r):
-    """Test 2"""
     station_list = [i for i in stations if haversine(i.coord, centre) <= r]
 
     return station_list
 
 def rivers_with_station(stations):
-    """Test 3"""
     return {i.river for i in stations}
 
 def stations_by_river(stations):
