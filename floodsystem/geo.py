@@ -11,6 +11,7 @@ from haversine import haversine, Unit
 from collections import defaultdict
 
 def stations_by_distance(stations, p):
+    """Retrieves stations and Coords, to output a list of stations ordered by Distance."""
     station_list = []
     for station in stations:
         station_list.append((station, haversine(station.coord, p)))
