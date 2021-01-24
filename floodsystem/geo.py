@@ -19,6 +19,7 @@ def stations_by_distance(stations, p):
     return sorted_by_key(station_list, 1)
 
 def stations_within_radius(stations, centre, r):
+    """Creates a list of stations within a Circle with radius r and centre set by Coords."""
     station_list = [i for i in stations if haversine(i.coord, centre) <= r]
 
     return station_list
