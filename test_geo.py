@@ -31,7 +31,6 @@ def test_stations_within_radius():
     stations = []
     coord_list = [(52.2, 0.11), (53.79648, -1.54785), (50.718395, -1.883377)]
     p = (51.509865, -0.118092)
-    r = 160
     for i in range(len(coord_list)):
         # Create a station
         s_id = "test-s-id n"
