@@ -40,6 +40,7 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
+        """Determines whether or not the inputted range is abnormal."""
         if self.typical_range == None or self.typical_range[0] > self.typical_range[1]:
             return False
         else:
