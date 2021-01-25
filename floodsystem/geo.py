@@ -7,11 +7,11 @@ geographical data.
 """
 
 from .utils import sorted_by_key  # noqa
-from haversine import haversine, Unit
+from haversine import haversine
 from collections import defaultdict
 
 def stations_by_distance(stations, p):
-    """Retrieves stations and Coords, to output a list of stations ordered by Distance."""
+    """Given a list of stations and a coordinate (p), returns a list of tuples - (station, distance from p) ordered by distance"""
     station_list = []
     for station in stations:
         station_list.append((station, haversine(station.coord, p)))
