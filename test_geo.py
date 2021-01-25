@@ -64,12 +64,6 @@ def test_rivers_with_station():
     assert rivers_with_station(stations) == {stations[0].river, stations[1].river, stations[2].river}
 
 
-
-
-
-
-
-
 def test_stations_by_river():
 
     stations = []
@@ -88,11 +82,6 @@ def test_stations_by_river():
         Riv[stations[i].river].append(stations[i])
 
     assert Riv == (stations_by_river(stations))
-
-
-
-
-
 
 
 def test_rivers_by_station_number():
