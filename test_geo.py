@@ -1,7 +1,8 @@
 """Unit test for the geo module."""
 
 from collections import defaultdict
-from floodsystem.geo import rivers_by_station_number, rivers_with_station, stations_by_distance, stations_by_river, stations_within_radius
+from floodsystem.geo import (rivers_by_station_number, rivers_with_station, stations_by_distance,
+                            stations_by_river, stations_within_radius)
 from floodsystem.station import MonitoringStation
 
 
