@@ -56,5 +56,4 @@ def test_inconsistent_typical_range_stations():
         town = "My Town" + str(i)
         stations.append(MonitoringStation(s_id, m_id, label, coord, trange, river, town))
         
-    assert test_inconsistent_typical_range_stations(stations) == [stations[2]]
-    
+    assert inconsistent_typical_range_stations(stations) == [stations[2]]
