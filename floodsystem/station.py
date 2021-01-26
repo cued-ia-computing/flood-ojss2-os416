@@ -40,7 +40,7 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
-        """Determines whether or not the inputted range is abnormal."""
+        """Determines whether or not the inputted range is abnormal"""
         if self.typical_range == None or self.typical_range[0] > self.typical_range[1]:
             return False
         else:
@@ -49,5 +49,5 @@ class MonitoringStation:
 
 
 def inconsistent_typical_range_stations(stations):
-    """Returns stations with inconsistent typical ranges."""
+    """Given a list of stations, returns the stations with inconsistent typical ranges"""
     return [i for i in stations if not(i.typical_range_consistent())]
