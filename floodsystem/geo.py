@@ -19,17 +19,17 @@ def stations_by_distance(stations, p):
     return sorted_by_key(station_list, 1)
 
 def stations_within_radius(stations, centre, r):
-    """Creates a list of stations within a Circle with radius r and centre set by Coords."""
+    """Given a list of stations and a circle with a radius r and centre point defined by co-ordinates, returns a list of stations within the circle"""
     station_list = [i for i in stations if haversine(i.coord, centre) <= r]
 
     return station_list
 
 def rivers_with_station(stations):
-    """Returns the name of rivers from corresponding Stations."""
+    """Given a list of stations, returns a list of corresponding rivers"""
     return {i.river for i in stations}
 
 def stations_by_river(stations):
-    """Creates a list of rivers from station-data."""
+    """Given a list of stations, creates a dictionary of the stations with corresponding rivers as the key"""
     station_river = defaultdict(list)
     for i in stations:
         station_river[i.river].append(i)
@@ -37,7 +37,7 @@ def stations_by_river(stations):
     return station_river
 
 def rivers_by_station_number(stations, N):
-    """Creates a list of rivers sorted by number of stations on them."""
+    """Given a list of stations, returns a list of N many rivers and the number of stations on them, in decending order"""
     stations_per_river = [(river, len(stats)) for river, stats in stations_by_river(stations).items()]
     stations_per_river = sorted_by_key(stations_per_river, 1, True)
     min_stations = stations_per_river[N-1][1]
