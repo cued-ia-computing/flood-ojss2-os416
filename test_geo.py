@@ -2,7 +2,7 @@
 
 from collections import defaultdict
 from floodsystem.geo import (rivers_by_station_number, rivers_with_station, stations_by_distance,
-                            stations_by_river, stations_within_radius)
+                             stations_by_river, stations_within_radius)
 from floodsystem.station import MonitoringStation
 
 
@@ -23,8 +23,8 @@ def test_stations_by_distance():
         stations.append(MonitoringStation(s_id, m_id, label, coord, trange, river, town))
 
     assert stations_by_distance(stations, p) == [(stations[0], 78.32212827453219),
-                                                (stations[2], 151.419460832818),
-                                                (stations[1], 271.9227491652322)]
+                                                 (stations[2], 151.419460832818),
+                                                 (stations[1], 271.9227491652322)]
 
 
 def test_stations_within_radius():
