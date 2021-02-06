@@ -56,3 +56,24 @@ def test_inconsistent_typical_range_stations():
         stations.append(MonitoringStation(s_id, m_id, label, coord, trange, river, town))
 
     assert inconsistent_typical_range_stations(stations) == [stations[2]]
+
+def test_relative_water_level():
+    stations = []
+    trange_list = [(0.5, 2.5), None, (2, 1)]
+    p = (51.509865, -0.118092)
+    for i in range(len(trange_list)):
+        # Create a station
+        s_id = "test-s-id n"
+        m_id = "test-m-id n"
+        label = "some station n"
+        coord = (52, 1)
+        trange = trange_list[i]
+        river = "River" + str(i)
+        town = "My Town" + str(i)
+        stations.append(MonitoringStation(s_id, m_id, label, coord, trange, river, town))
+
+    stations[0].latest_level = 1.5
+    stations[1].latest_level = 2
+    stations[2].latest_level = None
+
+    assert relative_water_level(stations) == 0.5
