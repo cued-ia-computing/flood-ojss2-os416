@@ -13,11 +13,28 @@ def stations_level_over_threshold(stations, tol):
     Tuples contatin station name and latest relative water level and are sorted by relative water level in descending order"""
 
     Flooded_stations = []
-    for i in range(len(stations)):
-        relative_level = stations[i].relative_water_level - tol
-        if relative_level > 0:
-            Flooded_stations += (stations[i], relative_level)
+    for station in stations:
+        rel_level = station.relative_water_level()
+        if rel_level == None:
+            pass
+        elif rel_level > tol:
+            Flooded_stations.append((station, rel_level))
         else:
             pass
-        return sorted_by_key(Flooded_stations, 1)
+
+    return sorted_by_key(Flooded_stations, 1, reverse=True)
+
+def stations_highest_rel_level(stations, N):
+    """Given a list of stations, returns N stations at highest risk of flooding"""
+    def rel_level(x):
+        level = x.relative_water_level()
+        if level == None:
+            return -69669696969669696969699420
+        return level
+   
+    stations.sort(key=rel_level, reverse=True)
+    return stations[:N]
+ 
+
+
     
