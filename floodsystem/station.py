@@ -7,6 +7,9 @@ for manipulating/modifying station data
 """
 
 
+from floodsystem.datafetcher import fetch_latest_water_level_data
+
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -48,10 +51,10 @@ class MonitoringStation:
     
     def relative_water_level(self):
         """Returns the latest water level as a fraction of the typical range"""
-        if self.latest_level == None:
+        if self.latest_level == None or self.typical_range_consistent() == False:
             return None
         else:
-            ratio = (self.latest_level - self.typical_range[0])/self.typical_range
+            ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
             return ratio
 
 
