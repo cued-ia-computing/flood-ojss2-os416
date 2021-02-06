@@ -11,7 +11,7 @@ class MonitoringStation:
     """This class represents a river level monitoring station"""
 
     def __init__(self, station_id, measure_id, label, coord, typical_range,
-                 river, town):
+                 river, town, latest_level):
 
         self.station_id = station_id
         self.measure_id = measure_id
@@ -27,7 +27,7 @@ class MonitoringStation:
         self.river = river
         self.town = town
 
-        self.latest_level = None
+        self.latest_level = latest_level
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -37,6 +37,7 @@ class MonitoringStation:
         d += "   town:          {}\n".format(self.town)
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
+        d += "   latest_level: {}".format(self.latest_level)
         return d
 
     def typical_range_consistent(self):
