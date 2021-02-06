@@ -14,11 +14,10 @@ def stations_level_over_threshold(stations, tol):
 
     Flooded_stations = []
     for i in range(len(stations)):
-        relative_level = stations[i].latest_level - tol
+        relative_level = stations[i].relative_water_level - tol
         if relative_level > 0:
             Flooded_stations += (stations[i], relative_level)
         else:
             pass
         return sorted_by_key(Flooded_stations, 1)
     
-
