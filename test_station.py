@@ -78,5 +78,5 @@ def test_relative_water_level():
     stations[2].latest_level = None
 
     assert stations[0].relative_water_level() == 0.5
-    assert stations[1].relative_water_level() == None
-    assert stations[2].relative_water_level() == None
+    assert stations[1].relative_water_level() is None
+    assert stations[2].relative_water_level() is None
