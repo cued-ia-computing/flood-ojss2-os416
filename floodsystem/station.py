@@ -6,8 +6,6 @@ for manipulating/modifying station data
 
 """
 
-from collections import defaultdict
-
 from floodsystem.datafetcher import fetch_latest_water_level_data
 
 
