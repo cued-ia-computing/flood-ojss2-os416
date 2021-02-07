@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 from matplotlib.dates import date2num
 
-def plot_water_level(station, dates, levels, show = True):
+def plot_water_level(station, dates, levels, draw = True):
     df = pd.DataFrame({'date': dates, 'level': levels})
     output_file("datetime.html")
     min_level, max_level = station.typical_range
@@ -24,7 +24,7 @@ def plot_water_level(station, dates, levels, show = True):
     low_range = Span(location=min_level,dimension='width', line_color='green',line_width=2)
     high_range = Span(location=max_level,dimension='width', line_color='red',line_width=2)
     p.renderers.extend([low_range, high_range])
-    if show:
+    if draw:
         show(p)
     return p
 
@@ -33,18 +33,21 @@ def plot_many_water_levels(stations, dt, polyfit = None):
     for station in stations:
         dates, levels = fetch_measure_levels(station.measure_id, dt)
         if polyfit != None:
-            p = plot_water_level_with_fit(station, dates, levels, polyfit, show = False)
+            p = plot_water_level_with_fit(station, dates, levels, polyfit, draw = False)
         else:
-            p = plot_water_level(station, dates, levels , show = False)
+            p = plot_water_level(station, dates, levels , draw = False)
         plots.append(p)
     show(column(plots))
 
-def plot_water_level_with_fit(station, dates, levels, p, show = True):
-    poly, d0 = polyfit(dates, levels, p)
-    p = plot_water_level(station, dates, levels, show = False)
+def plot_water_level_with_fit(station, dates, levels, p, draw = True, poly_in = (None, None)):
+    if poly_in == (None, None):
+        poly, d0 = polyfit(dates, levels, p)
+    else:
+        poly, d0 = poly_in[0], poly_in[1]
+    p = plot_water_level(station, dates, levels, draw = False)
     t = date2num(np.array(dates))
     df = pd.DataFrame({'t': dates, 'level': poly(t - d0)})
     p.line(df['t'], df['level'], color='orange', alpha=1)
-    if show:
+    if draw:
         show(p)
     return p
