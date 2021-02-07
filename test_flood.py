@@ -1,4 +1,4 @@
-from floodsystem.station import MonitoringStation, inconsistent_typical_range_stations
+from floodsystem.station import MonitoringStation
 from floodsystem.flood import stations_highest_rel_level, stations_level_over_threshold
 
 
