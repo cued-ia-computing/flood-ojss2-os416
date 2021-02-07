@@ -6,7 +6,6 @@ for manipulating/modifying station data
 
 """
 
-
 from floodsystem.datafetcher import fetch_latest_water_level_data
 
 
@@ -62,3 +61,4 @@ class MonitoringStation:
 def inconsistent_typical_range_stations(stations):
     """Given a list of stations, returns the stations with inconsistent typical ranges"""
     return [i for i in stations if not(i.typical_range_consistent())]
+

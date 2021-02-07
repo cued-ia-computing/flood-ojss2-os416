@@ -5,7 +5,6 @@ related to floods.
 
 
 from floodsystem.utils import sorted_by_key
-from .station import MonitoringStation
 
 
 def stations_level_over_threshold(stations, tol):
@@ -35,6 +34,3 @@ def stations_highest_rel_level(stations, N):
     stations.sort(key=rel_level, reverse=True)
     return stations[:N]
  
-
-
-    
