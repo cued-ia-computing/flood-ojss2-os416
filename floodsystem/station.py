@@ -8,6 +8,9 @@ for manipulating/modifying station data
 
 from collections import defaultdict
 
+from floodsystem.datafetcher import fetch_latest_water_level_data
+
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -41,13 +44,23 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
+        """Determines whether or not the inputted range is abnormal"""
         if self.typical_range == None or self.typical_range[0] > self.typical_range[1]:
             return False
         else:
             return True
+    
+    def relative_water_level(self):
+        """Returns the latest water level as a fraction of the typical range"""
+        if self.latest_level == None or self.typical_range_consistent() == False:
+            return None
+        else:
+            ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+            return ratio
 
 
 
 def inconsistent_typical_range_stations(stations):
     """Given a list of stations, returns the stations with inconsistent typical ranges"""
     return [i for i in stations if not(i.typical_range_consistent())]
+
