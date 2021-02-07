@@ -4,7 +4,6 @@ from floodsystem.flood import stations_highest_rel_level
 from datetime import timedelta
 
 
-
 dt = 10
 N = 5
 

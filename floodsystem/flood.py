@@ -35,6 +35,3 @@ def stations_highest_rel_level(stations, N):
     stations.sort(key=rel_level, reverse=True)
     return stations[:N]
  
-
-
-    
