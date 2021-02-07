@@ -12,9 +12,9 @@ import pandas as pd
 import numpy as np
 from matplotlib.dates import date2num
 
-def plot_water_level(station, dates, levels, draw = True):
+def plot_water_level(station, dates, levels, draw = True, file_name = "levels_plotting.html"):
     df = pd.DataFrame({'date': dates, 'level': levels})
-    output_file("datetime.html")
+    output_file(file_name)
     min_level = min(station.typical_range[0], min(levels))
     max_level = max(station.typical_range[1], max(levels))
     range = max_level - min_level
