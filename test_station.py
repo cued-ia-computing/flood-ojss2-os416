@@ -58,8 +58,6 @@ def test_inconsistent_typical_range_stations():
 
     assert inconsistent_typical_range_stations(stations) == [stations[2]]
 
-
-"""
 def test_relative_water_level():
     stations = []
     trange_list = [(0.5, 2.5), None, (2, 1)]
@@ -78,4 +76,7 @@ def test_relative_water_level():
     stations[1].latest_level = 2
     stations[2].latest_level = None
 
-    assert relative_water_level(stations) == 0.5"""
+    assert stations[0].relative_water_level() == 0.5
+    assert stations[1].relative_water_level() == None
+    assert stations[2].relative_water_level() == None
+    
