@@ -58,6 +58,7 @@ def test_inconsistent_typical_range_stations():
 
     assert inconsistent_typical_range_stations(stations) == [stations[2]]
 
+
 """
 def test_relative_water_level():
     stations = []
