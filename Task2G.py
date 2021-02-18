@@ -1,21 +1,14 @@
-from floodsystem.plot import plot_water_level_with_fit
-from floodsystem.stationdata import build_station_list
-from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.analysis import polyfit
+from floodsystem.plot import plot_many_water_levels
+from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.flood import stations_by_risk
 from datetime import timedelta
-from bokeh.plotting import show
-from bokeh.models import Span
 
-dt = 10
-i = 16
-stations = build_station_list()
-dates, levels = fetch_measure_levels(stations[i].measure_id, dt=timedelta(days=dt))
-x = int(len(dates) * 0.2)
-poly, d0 = polyfit(dates[x:], levels[x:], 3)
 
-p = plot_water_level_with_fit(stations[i], dates, levels, 10, draw=False, poly_in=(poly, d0))
-print(dates[x])
-end = Span(location=dates[x], dimension='height', line_color='blue', line_width=2)
+# May take some time to run due to polyfits, station list has been cut for demonstration
+stations = build_station_list()[:50]
+update_water_levels(stations)
+stations_above_high = stations_by_risk(stations, 'high')
+for risk in stations_above_high.keys():
+    print(risk, ':', [i.name for i in stations_above_high[risk]])
 
-p.renderers.extend([end])
-show(p)
+plot_many_water_levels(stations_above_high['severe'], timedelta(days=10), polyfit=5)

@@ -4,10 +4,13 @@ from bokeh.plotting import gmap
 from bokeh.models import GMapOptions, ColumnDataSource, HoverTool
 from collections import defaultdict
 
+
+# Provide API key here
 GM_API_KEY = "AIzaSyAdVSBYQhCPbZIG0fQ-fsNIK4AeQceOJYQ"
 stations = build_station_list()
 
-def station_map(stations, zoom=6, map_type='satellite'):
+def station_map(stations, zoom=6, map_type='satellite', API_KEY = GM_API_KEY):
+    """Plots all stations on google map"""
     station_values = defaultdict(list)
     for stat in stations:
         station_values['lon'].append(stat.coord[1])
