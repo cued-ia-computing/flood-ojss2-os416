@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 from matplotlib.dates import date2num
 
-def plot_water_level(station, dates, levels, draw = True, file_name = "levels_plotting.html"):
+def plot_water_levels(station, dates, levels, draw = True, file_name = "levels_plotting.html"):
     """Plots level data and typical range for a station. Returns the Bokeh figure of the plot."""
     df = pd.DataFrame({'date': dates, 'level': levels})
     output_file(file_name)
