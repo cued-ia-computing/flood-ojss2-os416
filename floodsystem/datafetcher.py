@@ -137,4 +137,10 @@ def fetch_measure_levels(measure_id, dt):
         dates.append(d)
         levels.append(measure['value'])
 
+    try:
+        min(levels)
+    except:
+        print('Issue with level data for', measure_id)
+        return [], []
+
     return dates, levels

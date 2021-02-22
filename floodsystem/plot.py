@@ -43,10 +43,9 @@ def plot_many_water_levels(stations, dt, polyfit = None, draw = True):
             if polyfit != None:
                 p = plot_water_level_with_fit(station, dates, levels, polyfit, draw = False)
             else:
-                p = plot_water_level(station, dates, levels , draw = False)
-            plots.append(p)
-        else:
-            print(station.name, "has no level data")
+                p = plot_water_levels(station, dates, levels , draw = False)
+            if p != None:
+                plots.append(p)
     if draw:
         show(column(plots))
     return plots
@@ -58,7 +57,7 @@ def plot_water_level_with_fit(station, dates, levels, p0, draw = True, poly_in =
         poly, d0 = polyfit(dates, levels, p0)
     else:
         poly, d0 = poly_in
-    p = plot_water_level(station, dates, levels, draw = False)
+    p = plot_water_levels(station, dates, levels, draw = False)
     t = date2num(np.array(dates))
     df = pd.DataFrame({'t': dates, 'level': poly(t - d0)})
     p.line(df['t'], df['level'], color='orange', alpha=1, legend_label=str(p0) + "th Degree Polyfit")
